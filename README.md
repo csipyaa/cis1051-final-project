@@ -15,9 +15,12 @@ This objective of this project is to develop a secure user login system with a f
 * A one-time verification code will be sent to an email address upon account creation.
 
 ## Technology Stack
-Frontend: HTML, CSS, Javascript 
-Backend: Python Flask
-Verification Integration: 
+* Frontend: HTML, CSS, Javascript 
+* Backend: Python Flask
+* Verification Integration: Email to send one-time verification code
+
+## Source Files 
+* 
 
 
 
