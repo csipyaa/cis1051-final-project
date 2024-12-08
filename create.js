@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -78,8 +78,17 @@ submitButton.addEventListener('click', function (e) {
         .then((userCredential) => {
             const user = userCredential.user;
             alert("Creating account...");
-            window.location.href = "login.html"; // Redirect to login page
-        
+            //Email Verifcation 
+            sendEmailVerification(user)
+            .then(() => {
+                alert("Verification has been sent to your email. Please check your inbox!");
+                window.location.href = "login.html"; // Redirect to login page
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert(error.message)
+            })
         })
         .catch((error) => {
             const errorCode = error.code;
