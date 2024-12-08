@@ -36,15 +36,18 @@ submitButton.addEventListener('click', function (e) {
 
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            // Signed up 
             const user = userCredential.user;
-            alert("Creating account...");
-            window.location.href = "signed.html" // Redirect you to signed.html (verified sign in) 
-
-        })
+            if (user.emailVerified) {
+            alert("You've succesfully verified your email! Logging in...");
+            window.location.href = "signed.html" // Redirect you to signed.html (verified sign in)
+        } else {
+            alert("You must verify your email before you can log in.");
+            auth.signOut();
+        }
+        }) 
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            alert(errorMessage); 
+            alert('Error: Invalid Email or Password. Please try again!');  
         });
 });
