@@ -25,6 +25,30 @@ const emailInput = document.getElementById('createEmail');
 const passwordInput = document.getElementById('createPassword');
 const submitButton = document.getElementById('createAccountButton');
 
+// Password Minimum Length (14)
+// Password Must include 1 Special Character, Number, Uppercase
+
+// Checking for password length
+function passwordLength(password) {
+    console.log('Password length', password.length);
+    return password.length >= 14;
+    }
+// Checking if password includes special character
+function passwordSpecial(password){
+    let specialChar = /[@$!%*?&]/;
+    return specialChar.test(password);
+}
+//Checking if password includes a number 
+function passwordNumber(password){
+    let numberChar = /\d/;
+    return numberChar.test(password);
+}
+//Checking if password includes upper case 
+function passwordUpper(password){
+    let upperCaseChar = /[A-Z]/;
+    return upperCaseChar.test(password);
+}
+
 // Event Listener for the create account button
 submitButton.addEventListener('click', function (e) {
     e.preventDefault(); // Prevent page refresh
@@ -32,7 +56,24 @@ submitButton.addEventListener('click', function (e) {
     const email = emailInput.value;
     const password = passwordInput.value;
     //alert('testing')
-
+    
+    // Individual password valdiation checks 
+    if (!passwordLength(password)){
+        alert("Password Must be at least 14 characters long.")
+        return; 
+    }
+    if (!passwordSpecial(password)){
+        alert("Password Must include at least 1 special character")
+        return;
+    }
+    if (!passwordNumber(password)){
+        alert("Password Must include at least 1 number")
+        return;
+    }
+    if (!passwordUpper(password)){
+        alert("Password Must include at least 1 uppercase")
+        return;
+    }
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             const user = userCredential.user;
