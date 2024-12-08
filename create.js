@@ -77,17 +77,17 @@ submitButton.addEventListener('click', function (e) {
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             const user = userCredential.user;
-            alert("Creating account...");
+            alert("Account created succesfully!");
             //Email Verifcation 
             sendEmailVerification(user)
             .then(() => {
-                alert("Verification has been sent to your email. Please check your inbox!");
+                alert("A verification link has been sent to your email. Please verify your account to login!");
                 window.location.href = "login.html"; // Redirect to login page
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                alert(error.message)
+                alert("Verification failed to send. Please try again!")
             })
         })
         .catch((error) => {
