@@ -22,6 +22,8 @@ This objective of this project is to develop a secure user login system with a f
 * Backend: Javascript
 * Verification Integration: Email to send one-time verification code Using Google Firebase
 
+#Notes
+This project was an incredibly enjoyable and educational experience. I had the opportunity to dive into Firebase and explore its extensive libraries, which was both challenging and rewarding. I came into this project with some prior knowledge of HTML, CSS, and JavaScript, however the process of building a website allowed me to refine and deepen my skill with these languages.
 
 
 
